@@ -67,6 +67,7 @@ public class MathTester {
 
     /**
      * S = 2/1 + 3/2 + 5/3 + 8/5 + 13/8 + ... + n
+     * 下一项的分子=上一项分子分母的和，分母=上一项的分子
      */
     static double sumS(int n) {
         double S, fz, fm, temp;
@@ -75,6 +76,30 @@ public class MathTester {
         fm = 1.0;
         for (int i = 1; i <= n; i++) {
             S += fz / fm;
+            temp = fz;
+            fm = fz;
+            fz += temp;
         }
+        return S;
+    }
+
+    /**
+     * 检测数组中是否有相等的
+     *
+     * @param a
+     * @return
+     */
+    static boolean isDuplicated(int[] a) {
+        boolean flag = false;
+        for (int i = 0; i <= a.length; i++) {
+            for (int j = i + 1; j <= a.length; j++) {
+                if (a[i] == a[j]) {
+                    flag = true;
+                    break;
+                }
+            }
+        }
+        return flag;
     }
 }
+
